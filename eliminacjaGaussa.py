@@ -1,17 +1,11 @@
-import numpy as np
 import basicMatrixFunctions as mf
 
 
 def gaussStart(inputMatrix):
-    if isPossible(inputMatrix):
-        for column in range(0, len(inputMatrix)):
-            inputMatrix = getOneInColumn(inputMatrix, column)
-            inputMatrix = getZerosInColumn(inputMatrix[0], column)
+    for column in range(0, len(inputMatrix)):
+        inputMatrix = getOneInColumn(inputMatrix, column)
+        inputMatrix = getZerosInColumn(inputMatrix, column)
     return inputMatrix
-
-
-def isPossible(inputMatrix):
-    return True
 
 
 def getOneInColumn(inputMatrix, column):
@@ -19,7 +13,7 @@ def getOneInColumn(inputMatrix, column):
         if inputMatrix.item(row, column) != 0:
             if row != column:
                 inputMatrix = mf.swapRow(inputMatrix, column, row)
-            return mf.getOneInColumn(inputMatrix, column, row), row
+            return mf.getOneInColumn(inputMatrix, column)
     print("ZERA WIDZE :O")
 
 
