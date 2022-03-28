@@ -1,4 +1,5 @@
 import basicMatrixFunctions as mf
+import math
 
 
 def gaussStart(inputMatrix):
@@ -10,11 +11,14 @@ def gaussStart(inputMatrix):
 
 def getOneInColumn(inputMatrix, column):
     for row in range(column, len(inputMatrix)):
-        if inputMatrix.item(row, column) != 0:
+        if not math.isclose(0, math.fabs(inputMatrix.item(row, column)), abs_tol=1e-14):
             if row != column:
                 inputMatrix = mf.swapRow(inputMatrix, column, row)
             return mf.getOneInColumn(inputMatrix, column)
-    print("ZERA WIDZE :O")
+    print("")
+    print("Układ może być nieoznaczony!")
+    print("")
+    return inputMatrix
 
 
 def getZerosInColumn(inputMatrix, column):
