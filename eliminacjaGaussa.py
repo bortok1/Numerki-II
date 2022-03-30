@@ -1,5 +1,6 @@
 import basicMatrixFunctions as mf
 import math
+import numpy as np
 
 
 def gaussStart(inputMatrix):
@@ -10,14 +11,14 @@ def gaussStart(inputMatrix):
 
 
 def getOneInColumn(inputMatrix, column):
+    row = None
     for row in range(column, len(inputMatrix)):
         if not math.isclose(0, math.fabs(inputMatrix.item(row, column)), abs_tol=1e-14):
             if row != column:
                 inputMatrix = mf.swapRow(inputMatrix, column, row)
             return mf.getOneInColumn(inputMatrix, column)
-    print("")
-    print("Układ może być nieoznaczony!")
-    print("")
+
+    inputMatrix[row] = np.matrix(np.zeros((1, len(inputMatrix) + 1)))
     return inputMatrix
 
 
