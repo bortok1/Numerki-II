@@ -10,6 +10,11 @@ def checkStart(matrix, outputMatrix):
     for n in range(0, math.floor(math.sqrt(outputMatrix.size))):
         if outputMatrix.item(n, math.floor(math.sqrt(outputMatrix.size))) == 0:
             return "Układ równań jest nieoznaczony."
+
+    i = 0
+    for row in outputMatrix:
+        i += 1
+        print("x", i, "=", round(row.item(0, row.size - 1), 10))
     return "Rozwiązane prawidłowo."
 
 
